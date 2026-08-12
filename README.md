@@ -24,6 +24,13 @@ Demo live (după configurarea GitHub Pages): `https://<organizație>.github.io/<
 - Finalizarea elimină activitatea curentă din grup și creează următoarea scadență folosind recurența activității.
 - Bannerul „DEMO SINTETIC” este vizibil permanent.
 
+## Capturi reale
+
+Capturi din exportul static de producție, fără overlay-ul Next.js Dev:
+
+- [Desktop — inbox](docs/screenshots/inbox-desktop.png)
+- [Mobil — inbox](docs/screenshots/inbox-mobile.png)
+
 ## Matrice P1 criteriu → fișier/test
 
 | Criteriu P1 | Implementare | Dovadă automatizată |

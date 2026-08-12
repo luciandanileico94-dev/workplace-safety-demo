@@ -2,3 +2,6 @@ node_modules/
 .next/
 *.tsbuildinfo
 .DS_Store
+out/
+/AGENTS.md
+/CLAUDE.md
