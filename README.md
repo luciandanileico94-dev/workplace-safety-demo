@@ -1,17 +1,32 @@
-# Workplace Safety Workflow — portfolio demo
+# Siguranță / flux
 
-A clean public portfolio edition of a private personal workplace-safety workflow application. It will demonstrate a practical Next.js interface for companies, workers, sites and recurring safety tasks, using synthetic data only.
+Demo public, clean-room, pentru un inbox operațional de activități de siguranță la locul de muncă. Interfața este în limba română și folosește exclusiv date inventate: angajați, locații și activități sintetice.
 
-## Evidence for the tender
+## Pornire locală
 
-- **React.js / Next.js** and **TypeScript / ES6+**
-- REST API routes and typed client integration
-- State management with React Query and React Context
-- Automated tests with Jest / React Testing Library
-- GitHub Actions, branch and pull-request workflow
+Necesită Node.js 20+.
 
-## Privacy and scope
+```bash
+npm ci
+npm run dev
+```
 
-This public edition is rebuilt from a selected, non-sensitive part of the original project. It contains no production credentials, personal data, client data, database dumps or private Git history.
+Verificări:
 
-Source code, screenshots, runnable instructions and a live demonstration will be added to this stable repository URL.
+```bash
+npm run typecheck
+npm run lint
+npm test
+npm run build
+```
+
+## Ce demonstrează
+
+- inbox responsive cu activități depășite, scad în următoarele 7 zile și mai târziu;
+- carduri cu muncitori sintetici, locație, categorie și recurență;
+- formular expandabil, accesibil, cu validare, mesaj de eroare și confirmare;
+- finalizarea elimină activitatea curentă și programează automat următoarea scadență periodică;
+- teste pentru clasificare, validare și interacțiunea principală;
+- CI GitHub Actions pentru instalare reproducibilă, typecheck, lint, teste și build.
+
+Acesta este un demo de portofoliu, nu un sistem juridic, nu o evidență oficială SSM și nu oferă consultanță legală. Nu conține autentificare, Supabase, cod QR, documente juridice, persoane sau companii reale, imagini copiate ori căi private.
