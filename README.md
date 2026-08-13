@@ -6,7 +6,9 @@ Demo de portofoliu pentru un flux de securitate și sănătate în muncă (SSM),
 
 ## Domeniu exact
 
-Aplicația ilustrează un scenariu sintetic, fără autentificare și fără backend: serviciul SSM vede două companii de construcții, compania vede lucrători, puncte de lucru și termene, iar compania poate atribui instruirea unui lucrător. În rolul Lucrător, utilizatorul parcurge exact trei secțiuni scurte, confirmând fiecare printr-un răspuns. Un răspuns greșit oferă explicație și permite retry. La final, registrul companiei arată instruirea completă, istoricul de încercări, următorul termen și starea demonstrativă de admisibilitate.
+Aplicația este un prototip local al unui serviciu SSM cu șase niveluri de acces: director, administrator, angajat al serviciului, companie client, conducător al locului de muncă și lucrător. Structura urmează cabinetele sursă: clienți și modurile A/B, puncte de lucru, lucrători, sarcini prioritizate, jurnal cu autorul acțiunii și cardul read-only al lucrătorului cu acces prin cod.
+
+Scenariul interactiv principal este complet: compania atribuie instruirea, lucrătorul parcurge trei secțiuni cu retry și, la final, registrul companiei reflectă admiterea demonstrativă. În cabinetul serviciului, bannerul „Lucrez pentru client” arată modul B și faptul că acțiunile intră în jurnal.
 
 Starea este păstrată în `localStorage`; butonul „Resetează demo” șterge progresul. Datele, numele, companiile și locațiile sunt inventate.
 
@@ -25,4 +27,4 @@ npm run build
 npm run dev
 ```
 
-Deschide `http://localhost:3000`. Pentru scenariul principal: „Companie” → „Atribuie instruirea” → „Lucrător” → răspunde la cele trei întrebări → „Vezi registrul companiei”.
+Deschide `http://localhost:3000`. Pentru scenariul principal: „Companie” → „Atribuie instruirea” → „Lucrător” → răspunde la cele trei întrebări → „Vezi registrul companiei”. Toate datele sunt locale; nu există login, API sau acces la date private.
