@@ -2,6 +2,8 @@
 
 Demo de portofoliu pentru un flux de securitate și sănătate în muncă (SSM), în limba română.
 
+**Demo live:** https://luciandanileico94-dev.github.io/workplace-safety-demo/
+
 ## Domeniu exact
 
 Aplicația ilustrează un scenariu sintetic, fără autentificare și fără backend: serviciul SSM vede două companii de construcții, compania vede lucrători, puncte de lucru și termene, iar compania poate atribui instruirea unui lucrător. În rolul Lucrător, utilizatorul parcurge exact trei secțiuni scurte, confirmând fiecare printr-un răspuns. Un răspuns greșit oferă explicație și permite retry. La final, registrul companiei arată instruirea completă, istoricul de încercări, următorul termen și starea demonstrativă de admisibilitate.

@@ -25,6 +25,13 @@ const STORAGE = "ssm-portfolio-demo-v1";
 const initialProgress: Progress = { assignedWorkerId: null, completed: [], attempts: {} };
 
 function dateLabel(value: string) { return value; }
+function loadProgress(): Progress {
+  try {
+    const parsed = JSON.parse(window.localStorage.getItem(STORAGE) ?? "null") as Partial<Progress> | null;
+    if (!parsed || typeof parsed !== "object" || !Array.isArray(parsed.completed) || typeof parsed.attempts !== "object") return initialProgress;
+    return { assignedWorkerId: typeof parsed.assignedWorkerId === "string" ? parsed.assignedWorkerId : null, completed: parsed.completed.filter((value): value is number => Number.isInteger(value) && value >= 0 && value < lessons.length), attempts: Object.fromEntries(Object.entries(parsed.attempts).filter(([key, value]) => Number.isInteger(Number(key)) && typeof value === "number" && value >= 0)) };
+  } catch { return initialProgress; }
+}
 
 export default function Home() {
   const [role, setRole] = useState<Role>("service");
@@ -37,10 +44,10 @@ export default function Home() {
   const companyWorkers = useMemo(() => workers.filter((item) => item.companyId === companyId), [companyId]);
   const assignedWorker = workers.find((item) => item.id === progress.assignedWorkerId);
 
-  useEffect(() => { const saved = window.localStorage.getItem(STORAGE); if (saved) setProgress(JSON.parse(saved)); }, []);
+  useEffect(() => { setProgress(loadProgress()); }, []);
   useEffect(() => { window.localStorage.setItem(STORAGE, JSON.stringify(progress)); }, [progress]);
 
-  function assign(workerId: string) { setProgress((current) => ({ ...current, assignedWorkerId: workerId })); }
+  function assign(workerId: string) { setProgress((current) => current.assignedWorkerId === workerId ? current : { ...initialProgress, assignedWorkerId: workerId }); }
   function answer() {
     const lesson = lessons[section];
     if (selectedAnswer === "") return;
@@ -49,7 +56,7 @@ export default function Home() {
     setProgress((current) => ({ ...current, attempts: { ...current.attempts, [section]: (current.attempts[section] ?? 0) + 1 } }));
     if (correct) setProgress((current) => ({ ...current, completed: current.completed.includes(section) ? current.completed : [...current.completed, section] }));
   }
-  function reset() { setProgress(initialProgress); setSection(0); setSelectedAnswer(""); setFeedback(""); }
+  function reset() { window.localStorage.removeItem(STORAGE); setProgress(initialProgress); setSection(0); setSelectedAnswer(""); setFeedback(""); }
   const completedCount = progress.completed.length;
   const rosterStatus = (worker: Worker) => worker.id === progress.assignedWorkerId && completedCount === 3 ? "Instruire completă" : worker.id === progress.assignedWorkerId ? `${completedCount}/3 secțiuni` : "Neatribuit";
 

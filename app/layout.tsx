@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Siguranță | Inbox operațional",
-  description: "Demo de portofoliu pentru fluxuri sintetice de siguranță la locul de muncă.",
+  title: "Siguranță în flux | demo SSM",
+  description: "Scenariu demonstrativ SSM: serviciu, companie, lucrător și instruire locală cu date sintetice.",
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
